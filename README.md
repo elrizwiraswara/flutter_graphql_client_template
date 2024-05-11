@@ -36,7 +36,7 @@ npx get-graphql-schema http://localhost:8000/graphql > lib/schema/schema.graphql
 ```
 
 ### Add operations
-Add operations into:
+Create and add operations into:
 
 > lib/operations/query/query_operation_name.graphql
 
@@ -63,7 +63,7 @@ void getUser() async {
   }
 }
 ```
-See [example](example/) for details
+See [example](example/lib/main.dart) for details
 ## Testing
 ```
 flutter test
@@ -71,4 +71,4 @@ flutter test
 See [test](test/) for test examples
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
