@@ -41,25 +41,22 @@ class GraphQLService {
     _init();
   }
 
-  factory GraphQLService({GraphQLClient? testClient}) {
-    if (testClient != null) {
-      return GraphQLService._internal(testClient: testClient);
-    }
+  factory GraphQLService() {
     return _singleton;
   }
 
   /// The init() method is automatically called when [GraphQLService] instantiated or GraphQLService.client is accessed,
   /// but only if the client has not been initialized yet (i.e., when _initialized is false).
-  GraphQLService._internal({GraphQLClient? testClient}) {
+  GraphQLService._internal() {
     if (_initialized) return;
-    _init(testClient: testClient);
+    _init();
   }
 
   Future<String?> _getToken() async {
     return _token;
   }
 
-  Future<void> _init({GraphQLClient? testClient}) async {
+  Future<void> _init() async {
     try {
       /// Load environment variables at runtime from a .env file.
       /// see https://pub.dev/packages/dotenv
@@ -82,12 +79,11 @@ class GraphQLService {
       /// The order of the links in the array matters!
       link = Link.from([authLink, httpLink]);
 
-      client = testClient ??
-          GraphQLClient(
-            link: link,
-            cache: GraphQLCache(),
-            defaultPolicies: DefaultPolicies(),
-          );
+      client = GraphQLClient(
+        link: link,
+        cache: GraphQLCache(),
+        defaultPolicies: DefaultPolicies(),
+      );
 
       _initialized = true;
     } catch (e) {
