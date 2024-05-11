@@ -1,0 +1,5 @@
+query UserFindOne($where: UserWhereUniqueInput!) {
+  userFindOne(where: $where) {
+    fullName
+  }
+}

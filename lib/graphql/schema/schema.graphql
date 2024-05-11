@@ -1,0 +1,44 @@
+# Install using yarn
+# yarn global add get-graphql-schema
+#
+# Install using npm
+# npm install -g get-graphql-schema
+#
+# Get GraphQL Schema with this command or you can also download/copy manually from the server
+# npx get-graphql-schema http://localhost:8000/graphql > lib/graphql/your_app.schema.graphql 
+# 
+# Generate GraphQL
+# dart run build_runner build
+#
+
+type User {
+  id: String!
+  fullName: String!
+  email: String
+}
+
+input UserUpdateInput {
+  fullName: StringFieldUpdateOperationsInput
+  email: NullableStringFieldUpdateOperationsInput
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+input UserWhereUniqueInput {
+  userId: String
+}
+
+type Mutation {
+  userUpdateOne(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+}
+
+type Query {
+  userFindOne(where: UserWhereUniqueInput!): User
+  userFindOne(where: UserWhereUniqueInput!): User
+}
