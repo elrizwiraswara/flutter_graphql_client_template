@@ -48,7 +48,6 @@ class GraphQLService {
   /// The init() method is automatically called when [GraphQLService] instantiated or GraphQLService.client is accessed,
   /// but only if the client has not been initialized yet (i.e., when _initialized is false).
   GraphQLService._internal() {
-    if (_initialized) return;
     _init();
   }
 
@@ -58,6 +57,8 @@ class GraphQLService {
 
   Future<void> _init() async {
     try {
+      if (_initialized) return;
+
       /// Load environment variables at runtime from a .env file.
       /// see https://pub.dev/packages/dotenv
       var env = DotEnv(includePlatformEnvironment: true)..load();
