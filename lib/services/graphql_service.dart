@@ -4,8 +4,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 class GraphQLService {
   static final GraphQLService _singleton = GraphQLService._internal();
 
-  bool _initialized = false;
-
   late AuthLink authLink;
   late HttpLink httpLink;
   late Link link;
@@ -22,21 +20,18 @@ class GraphQLService {
 
   /// Set [token] and re-init the client
   set token(String token) {
-    _initialized = false;
     _token = token;
     _init();
   }
 
   /// Set [headerKey] and re-init the client
   set headerKey(String headerKey) {
-    _initialized = false;
     _headerKey = headerKey;
     _init();
   }
 
   /// Set [httpHeaders] and re-init the client
   set httpHeaders(Map<String, String> headers) {
-    _initialized = false;
     _httpHeaders = headers;
     _init();
   }
@@ -57,8 +52,6 @@ class GraphQLService {
 
   Future<void> _init() async {
     try {
-      if (_initialized) return;
-
       /// Load environment variables at runtime from a .env file.
       /// see https://pub.dev/packages/dotenv
       var env = DotEnv(includePlatformEnvironment: true)..load();
@@ -85,8 +78,6 @@ class GraphQLService {
         cache: GraphQLCache(),
         defaultPolicies: DefaultPolicies(),
       );
-
-      _initialized = true;
     } catch (e) {
       print(e);
       throw Exception(e);
