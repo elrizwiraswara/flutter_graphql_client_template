@@ -7,10 +7,10 @@ import '../../services/graphql_service.dart';
 import '../../utils/gql_result.dart';
 import '../interfaces/user_repository.dart';
 
-class GqlUserRepositoryImpl implements GqlUserRepository {
+class UserRepositoryImpl implements UserRepository {
   final GraphQLClient client;
 
-  GqlUserRepositoryImpl({GraphQLClient? client}) : client = client ?? GraphQLService().client;
+  UserRepositoryImpl.UserRepositoryImpl({GraphQLClient? client}) : client = client ?? GraphQLService().client;
 
   @override
   Future<GqlResult<Query$UserFindOne?>> userFindOne({

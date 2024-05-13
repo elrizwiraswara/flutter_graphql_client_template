@@ -13,12 +13,12 @@ import 'user_repository_impl_test.mocks.dart';
 void main() {
   // Declare variables for the mock client and the repository
   late MockGraphQLClient client;
-  late GqlUserRepositoryImpl repository;
+  late UserRepositoryImpl repository;
 
   // Set up the mock client and the repository before all tests
   setUpAll(() async {
     client = MockGraphQLClient();
-    repository = GqlUserRepositoryImpl(client: client);
+    repository = UserRepositoryImpl.UserRepositoryImpl(client: client);
   });
 
   // Group of tests for successful operations

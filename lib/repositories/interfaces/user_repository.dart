@@ -1,6 +1,6 @@
 import '../../utils/gql_result.dart';
 
-abstract class GqlUserRepository {
+abstract class UserRepository {
   Future<GqlResult> userFindOne({
     required String userId,
   });

@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getUser() async {
-    var res = await GqlUserRepositoryImpl().userFindOne(
+    var res = await UserRepositoryImpl.UserRepositoryImpl().userFindOne(
       userId: '1',
     );
 
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void updatedUser() async {
     final messenger = ScaffoldMessenger.of(context);
 
-    var res = await GqlUserRepositoryImpl().userUpdateOne(
+    var res = await UserRepositoryImpl.UserRepositoryImpl().userUpdateOne(
       userId: '1',
       email: 'email',
       fullName: 'fullname',
