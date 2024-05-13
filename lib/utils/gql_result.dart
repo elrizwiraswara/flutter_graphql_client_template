@@ -11,4 +11,7 @@ class GqlResult<T> {
   bool get isSuccess => error == null;
 
   bool get isHasError => !isSuccess;
+
+  @override
+  String toString() => "Data: $data | Error: $error";
 }
