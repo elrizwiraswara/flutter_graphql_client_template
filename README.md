@@ -22,16 +22,16 @@ Please note that while this template provides a basic structure, you may need to
 ### Get GraphQL Schema
 Retrieve the GraphQL Schema using either `get-graphql-schema` or alternatively, you can manually download/copy it and place it into `lib/schema/schema.graphql`
 ### Install using yarn
-```
+```sh
 yarn global add get-graphql-schema
 ```
 
 ### Install using npm
-```
+```sh
 npm install -g get-graphql-schema
 ```
 ### Get GraphQL Schema with this command
-```
+```sh
 npx get-graphql-schema http://localhost:8000/graphql > lib/schema/schema.graphql
 ```
 
@@ -43,11 +43,11 @@ Create and add operations into:
 > lib/operations/mutation/mutation_operation_name.graphql
 
 ### Generate GraphQL
-```
+```sh
 dart run build_runner build
 ```
 ## How To Use
-```
+```dart
 void getUser() async {
   var res = await GqlUserRepositoryImpl().userFindOne(
     userId: '1',
@@ -65,7 +65,7 @@ void getUser() async {
 ```
 See [example](example/lib/main.dart) for details
 ## Testing
-```
+```sh
 flutter test
 ```
 See [test](test/) for test examples
